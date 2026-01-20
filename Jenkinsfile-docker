@@ -26,16 +26,16 @@ pipeline {
 		stage('ImageTag') {
                         agent any
                         steps {
-                                sh 'docker image tag tomcat:hello leeeunmi/tomcat:$BUILDNUMBER'
-				sh 'docker image tag tomcat:hello leeeunmi/tomcat:latest'
+                                sh 'docker image tag tomcat:hello minnielee/tomcat:$BUILD_NUMBER'
+				sh 'docker image tag tomcat:hello minnielee/tomcat:latest'
                         }
                 }
 		stage('ImagePush') {
                         agent any
                         steps {
 				withDockerRegistry(credentialsId: 'docker-hub-token', url: 'https://index.docker.io/v1/') {
-	                     		sh 'docker image push leeeunmi/tomcat:$BUILDNUMBER'
-					sh 'docker image push leeeunmi/tomcat:latest'
+	                     		sh 'docker image push minnielee/tomcat:$BUILD_NUMBER'
+					sh 'docker image push minnielee/tomcat:latest'
 				}
                         }
                 }
