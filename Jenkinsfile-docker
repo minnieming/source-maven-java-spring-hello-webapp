@@ -20,7 +20,8 @@ pipeline {
 		stage('ImageBuild') {
                         agent any
                         steps {
-                                sh 'docker image build -t tomcat:hello .'
+				sh 'docker ps'
+                                //sh 'docker image build -t tomcat:hello .'
                         }
                 }
 		stage('ImageTag') {
